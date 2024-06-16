@@ -73,7 +73,7 @@ Google Gemini: 'ocr_db.gemini_documents':
 }
 ```
 
-AWS Bedrock : 
+AWS Bedrock 'ocr_db.bedrock_documents': 
 ```
 {
   "fields": [
