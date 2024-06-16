@@ -1,0 +1,4 @@
+pymongo
+openai
+boto3
+google.generativeai
