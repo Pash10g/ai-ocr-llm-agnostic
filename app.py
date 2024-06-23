@@ -84,7 +84,7 @@ def generate_image_description_with_claude(image):
 
     claude_response = bedrock_runtime.invoke_model(
         body=claude_body,
-        modelId="anthropic.claude-3-sonnet-20240229-v1:0",
+        modelId="anthropic.claude-3-5-sonnet-20240620-v1:0",
         accept="application/json",
         contentType="application/json",
     )
@@ -255,7 +255,7 @@ def claude_gen_task(ocr_text,prompt):
                 ]
             }]
         }),
-        modelId="anthropic.claude-3-sonnet-20240229-v1:0",
+        modelId="anthropic.claude-3-5-sonnet-20240620-v1:0",
         accept="application/json",
         contentType="application/json",
     )
