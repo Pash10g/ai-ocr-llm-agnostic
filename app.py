@@ -130,7 +130,7 @@ def transform_image_to_text(image, format,model):
         extracted_text = response.choices[0].message.content
         return extracted_text
     elif(model == "gemini-pro"):
-        vision = genai.GenerativeModel('gemini-pro-vision')
+        vision = genai.GenerativeModel('gemini-1.5-flash')
         response = vision.generate_content([f"You are an ocr to json expert looking to transcribe an image. If the type is 'other' please specify the type of object and clasiffy as you see fit. Please trunscribe this {transcribed_object} into a json only output for MongoDB store. Always have a 'name', 'summary' and 'type' top field (type is a subdocument with user and 'ai_classified') as well as other fields detailed as possible.", image], stream=False)
         return response.text
     elif(model == "bedrock-claude-3"):
