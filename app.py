@@ -189,16 +189,16 @@ def save_image_to_mongodb(image, description, embedding_model):
     # Parse the cleaned JSON string into a Python dictionary
     document = clean_document(description)
 
-    print(embedding_model)
 
     gen_embeddings = None
 
-    if embedding_model == "text_embedding-3-small":
+    if embedding_model == "text-embedding-3-small":
         #collection = db['openai_documents']
         gen_embeddings = openai_embedding(json.dumps({
             'name' : document['name'],
             'summary' : document['summary']
         }))
+       
     elif embedding_model == "amazon.titan-embed-text-v2:0":
         #collection = db['gemini_documents']
         gen_embeddings =  get_embedding_from_titan_multimodal(json.dumps({
@@ -476,7 +476,7 @@ else:
         # To read file as bytes:
             image = uploaded_file
 
-    @st.experimental_dialog("Processed Document",width="large")
+    @st.dialog("Processed Document",width="large")
     def show_dialog():
         st.write(extracted_text)
         if st.button("Confirm Save to MongoDB"):
@@ -484,7 +484,7 @@ else:
             save_image_to_mongodb(img, extracted_text, model[1])
             st.rerun()
             
-    @st.experimental_dialog("AI Task on Document",width="large")
+    @st.dialog("AI Task on Document",width="large")
     def show_prompt_dialog(work_doc):
         st.header("Please describe the AI processing to be done on the document.")
         st.markdown(f"""### Document: {work_doc['ocr']['name']} 
